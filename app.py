@@ -43,8 +43,9 @@ from mediapipe.tasks.python import vision as mp_vision
 MODEL_DIR  = os.path.join(os.path.dirname(__file__), "models")
 CAM_INDEX  = int(os.environ.get("CAM_INDEX", "0"))
 CAM_W, CAM_H = 640, 480
+HOST = os.environ.get("HOST", "localhost")
 JPEG_Q     = 70                   # quality for raw preview stream
-INFER_URL  = f"http://localhost:{os.environ.get('INFERENCE_PORT', '8001')}/translate"
+INFER_URL  = f"http://{HOST}:{os.environ.get('INFERENCE_PORT', '8001')}/translate"
 
 MEDIAPIPE_MODELS = {
     "pose_landmarker.task":
