@@ -1,0 +1,8 @@
+fastapi 
+"uvicorn[standard]" 
+httpx
+transformers
+sentencepiece
+huggingface_hub
+numpy
+pydantic

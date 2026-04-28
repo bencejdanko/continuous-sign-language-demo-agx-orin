@@ -10,7 +10,6 @@ REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$REPO_DIR"
 
 export HF_TOKEN="${HF_TOKEN:?Please set HF_TOKEN}"
-export CAM_INDEX="${CAM_INDEX:-0}"
 export INFERENCE_PORT="${INFERENCE_PORT:-8001}"
 
 echo "==> Starting inference server on port $INFERENCE_PORT …"
@@ -27,15 +26,10 @@ for i in $(seq 1 60); do
   sleep 1
 done
 
-echo "==> Starting demo app on port 8000 …"
-python app.py &
-APP_PID=$!
-
 echo ""
-echo "  Demo:            http://$(hostname -I | awk '{print $1}'):8000"
-echo "  Inference health: http://localhost:$INFERENCE_PORT/health"
+echo " Inference health: http://localhost:$INFERENCE_PORT/health"
 echo ""
-echo "  Press Ctrl-C to stop both servers."
+echo "  Press Ctrl-C to stop"
 
-trap "kill $INFER_PID $APP_PID 2>/dev/null; echo 'Stopped.'" EXIT INT TERM
+trap "kill $INFER_PID  2>/dev/null; echo 'Stopped.'" EXIT INT TERM
 wait

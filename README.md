@@ -47,19 +47,6 @@
 > [!IMPORTANT]
 > Do **not** `pip install torch` directly — it will pull the x86 build. Use NVIDIA's Jetson wheel.
 
-```bash
-# Check your JetPack version
-dpkg -l | grep nvidia-jetpack
-
-# JetPack 6.x  (L4T R36)
-pip install --no-cache \
-  https://developer.download.nvidia.com/compute/redist/jp/v61/pytorch/torch-2.5.0a0+872d972e41.nv24.08.17622132-cp310-cp310-linux_aarch64.whl
-
-# JetPack 5.x  (L4T R35)  — adjust version as needed
-pip install --no-cache \
-  https://developer.download.nvidia.com/compute/redist/jp/v512/pytorch/torch-2.1.0a0+41361538.nv23.06-cp310-cp310-linux_aarch64.whl
-```
-
 Verify:
 ```bash
 python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
